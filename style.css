@@ -1,9 +1,8 @@
-/* Global Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #000;
+    background-color: #000000;
 }
 
 body {
@@ -19,14 +18,17 @@ a {
     text-decoration: none;
 }
 
-/* Main Container */
 .main-container {
-    width: 90%;
+    width: 1200px;
     margin: 0 auto;
-    max-width: 1200px;
 }
 
-/* Navigation */
+@media screen and (max-width: 1200px) {
+    .main-container {
+        width: 90%;
+    }
+}
+
 .nav {
     display: flex;
     justify-content: space-between;
@@ -40,12 +42,32 @@ a {
 }
 
 #logo {
+    display: flex;
+    align-items: center;
     font-weight: 700;
     font-size: 2rem;
 }
 
-#logo a, nav ul li a {
+#logo a {
     color: white;
+}
+
+nav ul li {
+    display: flex;
+    align-items: center;
+}
+
+nav ul li a {
+    color: white;
+}
+
+.burger div {
+    width: 25px;
+    height: 2px;
+    background-color: white;
+    margin: 7px;
+    transition: all 0, 3s;
+    z-index: 99;
 }
 
 .burger {
@@ -56,17 +78,9 @@ a {
     right: 35px;
 }
 
-.burger div {
-    width: 25px;
-    height: 2px;
-    background-color: white;
-    margin: 7px;
-    transition: 0.3s;
-}
-
-/* Hero Section */
 #hero {
-    margin: 3rem 0 10rem;
+    margin-top: 3rem;
+    margin-bottom: 10rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
@@ -91,7 +105,10 @@ a {
 }
 
 .hero-right {
+    justify-content: center;
     max-width: 500px;
+    display: flex;
+    flex-direction: column;
 }
 
 .hero-right h3 {
@@ -101,6 +118,7 @@ a {
 
 .hero-right h3 span {
     color: red;
+    font-size: 1.5rem;
 }
 
 .hero-right h1 {
@@ -124,10 +142,12 @@ a {
     transform: rotate(360deg);
 }
 
-/* Skills Section */
 #skills {
-    margin: 10rem 0;
-    text-align: center;
+    margin-top: 10rem;
+    margin-bottom: 10rem;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 }
 
 #skills h1 {
@@ -142,12 +162,14 @@ a {
 
 .logos {
     width: 90%;
-    margin: 2rem auto;
     overflow: hidden;
+    position: relative;
+    margin: 2rem auto;
 }
 
 .logos-slide {
     display: flex;
+    width: fit-content;
     animation: slide 15s linear infinite;
 }
 
@@ -173,10 +195,12 @@ a {
     }
 }
 
-/* Projects Section */
-#project {
-    margin: 10rem 0;
-    text-align: center;
+#project{
+    margin-top: 10rem;
+    margin-bottom: 10rem;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 }
 
 #project h1 {
@@ -192,55 +216,68 @@ a {
 .project-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
+    grid-gap: 40px;
+    width: 1200px;
+    margin: 1.5rem auto;
+}
+
+@media screen and (max-width: 1200px) {
+    .project-list {
+        width: 90%;
+    }
 }
 
 .porto {
+    border-radius: 10px;
     position: relative;
     overflow: hidden;
-    border-radius: 10px;
+    margin-bottom: 10rem;
 }
 
 .porto img {
     width: 100%;
     border-radius: 10px;
+    display: block;
     transition: transform 0.5s ease;
 }
 
 .layer {
+    width: 100%;
+    height: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0), red);
+    border-radius: 10px;
     position: absolute;
     left: 0;
     bottom: 0;
-    width: 100%;
-    height: 0;
+    overflow: hidden;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(rgba(0, 0, 0, 0), red);
+    flex-direction: column;
+    padding: 0, 40px; 
     text-align: center;
     font-size: 14px;
-    padding: 0 40px;
     transition: height 0.5s ease;
 }
 
 .layer h3 {
     font-size: 1.5rem;
-    color: white;
-    margin-bottom: 20px;
 }
 
-.layer p {
+.layer h3, .layer p {
     font-weight: 500;
+    margin-bottom: 20px;
     color: white;
+    background-color: transparent;
 }
 
 .layer a {
     margin-top: 20px;
     color: red;
-    background: white;
+    text-decoration: none;
     font-size: 18px;
     line-height: 60px;
+    background: white;
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -255,35 +292,70 @@ a {
     height: 100%;
 }
 
-/* Contact Section */
+@media (max-width: 768px) {
+    .porto {
+        margin-bottom: 20px; 
+    }
+
+    .layer {
+        font-size: 12px; 
+    }
+
+    .layer a {
+        font-size: 16px; 
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .porto {
+        margin-bottom: 15px;
+    }
+
+    .layer {
+        font-size: 10px;
+    }
+
+    .layer a {
+        font-size: 14px;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+    }
+}
 #contact {
-    margin: 4rem 0 1rem;
+    margin-top: 4rem;
     text-align: center;
+    margin-bottom: 1rem;
 }
 
 #contact h1 {
-    margin-bottom: 5rem;
+    margin-bottom: 5rem; 
 }
 
 #contact h2 {
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.5rem; 
 }
 
 .container-contact {
-    margin: 2rem 0 5rem;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: 1fr;
+    gap: 1.5rem; 
 }
 
 .email, .or, .instagram {
     justify-content: center;
+    text-align: center;
 }
 
 .container-contact .social i {
     color: #e5e5e5;
-    font-size: 1rem;
+    font-size: 1rem; 
     margin-right: 8px;
     transition: 0.5s;
 }
@@ -293,7 +365,26 @@ a {
     transform: rotate(360deg);
 }
 
-/* Footer */
+@media (min-width: 768px) {
+    .container-contact {
+        grid-template-columns: 1fr 1fr 1fr; 
+    }
+}
+
+@media (min-width: 1024px) {
+    .container-contact {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    #contact h2 {
+        font-size: 2rem; 
+    }
+
+    .container-contact .social i {
+        font-size: 1.3rem; 
+    }
+}
+
 footer {
     margin-top: 10rem;
     color: white;
